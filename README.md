@@ -1,24 +1,20 @@
-# README
+# schedule_management_app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## データベーステーブル
+・taskテーブル
+  ・id
+  ・task_name （タスク名） string
+  ・end_time （終了時間）  datetime
+  ・priority （優先順位）  integer
+  ・status （ステータス）　string
+  ・memo （タスクの説明）  text
 
-Things you may want to cover:
+・labelテーブル
+  ・id
+  ・label_color   string
 
-* Ruby version 2.6.4
+・userテーブル
+  ・id
+  ・user_id      string
+  ・password     string
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
