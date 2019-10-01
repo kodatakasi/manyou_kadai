@@ -1,20 +1,28 @@
 # schedule_management_app
 
-## データベーステーブル
-- taskテーブル
-  - id
-  - task_name （タスク名） string
-  - end_time （終了時間）  datetime
-  - priority （優先順位）  integer
-  - status （ステータス）　string
-  - memo （タスクの説明）  text
 
-- labelテーブル
-  - id
-  - label_color   string
+## taskモデル
+|カラム名|データ型|
+|---|---|
+|id|integer|
+|end_time|datetime|
+|priority|integer|
+|status|string|
+|memo|text|
 
-- userテーブル
-  - id
-  - user_id      string
-  - password     string
 
+
+## labelモデル
+|カラム名|データ型|
+|---|---|
+|id|integer|
+|label_color|string|
+
+
+
+## userモデル
+|カラム名|データ型|
+|---|---|
+|id|integer|
+|user_id|integer|
+|password|string|
