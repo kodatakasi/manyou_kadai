@@ -1,4 +1,14 @@
-h1
-  | Tasks#edit
-p
-  | Find me in app/views/tasks/edit.html.erb
+h1 タスクの編集
+
+.nam.justify-content-end
+  = link_to  "一覧", tasks_path, class: 'nav-link'
+
+= form_with model: @task, local: true do |f|
+  .form-group
+    = f.label :task_name
+    = f.text_field :task_name, class: 'form-control', id: 'task_name'
+  .form-group
+    = f.label :memo
+    = f.text_area :memo, rows: 5, class: 'form-control', id: 'memo'
+  = f.submit nil, class: 'btn btn-primary'
+    
