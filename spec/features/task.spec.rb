@@ -14,16 +14,14 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスク作成のテスト" do
     visit new_task_path
 
-    Task.create!(task_name: 'test_task_05', memo: 'testtesttest')
-    Task.create!(task_name: 'test_task_06', memo: 'testkakimasita')
-
+    fill_in 'task_name', with: 'test_task_05'
+    fill_in 'memo', with: 'testkakimasita'
 
     click_on '登録する'
 
     visit tasks_path
 
     expect(page).to have_content 'test_task_05'
-    expect(page).to have_content 'test_task_06'
 
   end
 
