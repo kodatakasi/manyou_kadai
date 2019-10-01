@@ -21,6 +21,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'factory_bot_rails'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -34,6 +36,9 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'webdrivers'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
