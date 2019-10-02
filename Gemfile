@@ -23,6 +23,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
+  gem 'launchy'
 end
 
 group :development do
