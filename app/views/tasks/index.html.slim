@@ -13,7 +13,7 @@ table.table.table-hover
     - @tasks.each do |task|
       tr
         td= link_to task.task_name, task
-        td= task.created_at
+        td= task.created_at.strftime("%Y-%m-%d %H:%M:%S")
         td
           = link_to t('view.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
           = link_to  t('view.delete'), task, method: :delete, data: { confirm: t('confirm.delete_confirmation') }, class: 'btn btn-danger'
