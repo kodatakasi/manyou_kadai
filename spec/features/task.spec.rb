@@ -1,9 +1,17 @@
 require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
-  scenario "タスク一覧のテスト" do
+  background do
+    # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
+
+    # backgroundの中に記載された記述は、そのカテゴリ内（feature "タスク管理機能", type: :feature do から endまでの内部）
+    # に存在する全ての処理内（scenario内）で実行される
+    # （「タスク一覧のテスト」でも「タスクが作成日時の降順に並んでいるかのテスト」でも、background内のコードが実行される）
     Task.create!(task_name: 'test_task_01', memo: 'testtesttest')
-    Task.create!(task_name: 'test_task_02', memo: 'samplesample')
+    Task.create!(task_name: 'test_task_02', memo: 'mofmofmofmof')
+  end
+
+  scenario "タスク一覧のテスト" do
 
     visit tasks_path
 
@@ -34,5 +42,9 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     expect(page).to have_content 'samplesamplesample'
 
+  end
+
+  scenario "タスクが作成日時の降順に並んでいるかのテスト" do
+    # ここにテスト内容を記載する
   end
 end
