@@ -34,5 +34,11 @@ RSpec.feature "タスク管理機能", type: :feature do
     visit tasks_path
     all('tbody tr')[0].click_link 'test_task_10'
     expect(page).to have_content 'samplesamplesample'
+    visit tasks_path
+    all('tbody tr')[1].click_link 'test_task_02'
+    expect(page).to have_content 'mofmofmofmof'
+    visit tasks_path
+    all('tbody tr')[2].click_link 'test_task_01'
+    expect(page).to have_content 'testtesttest'
   end
 end
