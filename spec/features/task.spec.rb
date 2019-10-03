@@ -32,13 +32,13 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
-    all('tbody tr')[0].click_link 'test_task_10'
-    expect(page).to have_content 'samplesamplesample'
+    all('tbody tr')[0].click_link 'test_task_01'
+    expect(page).to have_content 'testtesttest'
     visit tasks_path
     all('tbody tr')[1].click_link 'test_task_02'
     expect(page).to have_content 'mofmofmofmof'
     visit tasks_path
-    all('tbody tr')[2].click_link 'test_task_01'
-    expect(page).to have_content 'testtesttest'
+    all('tbody tr')[2].click_link 'test_task_10'
+    expect(page).to have_content 'samplesamplesample'
   end
 end
