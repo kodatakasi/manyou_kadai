@@ -38,5 +38,5 @@ psql (PostgreSQL) 11.3<br>
 ```$ git push heroku master```
 6. DBのマイグレーションを行う
 ```$ heroku run rails db:migrate```
-<br>GitHubと連携させている場合は、下記コマンドで自動でHerokuのビルドが実行されます
+<br>GitHubと連携させている場合は、下記コマンドで自動でHerokuのビルドが実行されます<br>
 ```$ git push origin master```
