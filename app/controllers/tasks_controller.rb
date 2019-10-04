@@ -8,9 +8,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params)
-    if task.save!
-      redirect_to tasks_url, notice: t('flash.create')
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to @task, notice: t('flash.create')
+    else
+    render :new
     end
   end
 
