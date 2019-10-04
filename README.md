@@ -22,7 +22,11 @@
 |user_id|integer|
 |password|string|
 
-# herokuアップロード手順
+# herokuへのデプロイ手順
+開発環境
+ruby 2.6.4
+Rails 5.2.3
+psql (PostgreSQL) 11.3
 1. Herokuへの登録する
 2. Herokuをインストールする(Macの場合)
 ```$ brew tap heroku/brew && brew install heroku```
