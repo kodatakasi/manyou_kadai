@@ -27,11 +27,12 @@
 2. Herokuをインストールする(Macの場合)
 ```$ brew tap heroku/brew && brew install heroku```
 3. Herokuにログインする
+```$ heroku login```
 4. Heroku上にアプリケーションを作成する
 ```$ heroku create```
 5. Herokuへデプロイする
 ```$ git push heroku master```
 6. DBのマイグレーションを行う
 ```$ heroku run rails db:migrate```
-GitHubと連携させている場合は、下記コマンドで自動でHerokuのビルドが実行されます
+  GitHubと連携させている場合は、下記コマンドで自動でHerokuのビルドが実行されます
 ```$ git push origin master```
