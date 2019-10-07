@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
     if params[:end_time].present?
-      @tasks = Task.all.order(end_time: "ASC")
+      @tasks = Task.all.order(end_time: "DESC")
     else
       @tasks = Task.all.order(created_at: "DESC")
     end
