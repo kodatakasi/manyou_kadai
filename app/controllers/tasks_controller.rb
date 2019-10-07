@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.order(created_at: "DESC")
+    if params[:end_time].present?
+      @tasks = Task.all.order(end_time: "ASC")
+    else
+      @tasks = Task.all.order(created_at: "DESC")
+    end
   end
 
   def new
@@ -38,6 +42,6 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:task_name, :memo)
+    params.require(:task).permit(:task_name, :memo, :end_time)
   end
 end

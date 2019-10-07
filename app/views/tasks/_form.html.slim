@@ -10,4 +10,7 @@
   .form-group
     = f.label :memo
     = f.text_area :memo, rows: 5, class: 'form-control', id: 'memo'
+  .form-group
+    = f.label :end_time
+    = f.date_select :end_time, {use_month_numbers: true}, class: 'form-control', id: 'end_time'
   = f.submit nil, class: 'btn btn-primary'
