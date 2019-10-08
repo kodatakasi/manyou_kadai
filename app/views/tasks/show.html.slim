@@ -14,6 +14,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:memo)
       td= simple_format(h(@task.memo), {}, sanitize: false, wrapper_tag: "div")
     tr
+      th= Task.human_attribute_name(:end_time)
+      td= @task.end_time
+    tr
       th= Task.human_attribute_name(:created_at)
       td= @task.created_at
     tr
