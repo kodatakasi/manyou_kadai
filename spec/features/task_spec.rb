@@ -54,15 +54,15 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクが終了期限の降順に並んでいるかのテスト" do
     visit tasks_path
     click_link "終了期限でソートする"
-    all('tbody tr')[0].click_link 'test_task_02'
-    expect(page).to have_content '2019-10-02'
+    all('tbody tr')[0].click_link 'test_task_10'
+    expect(page).to have_content '2019-10-05'
     visit tasks_path
     click_link "終了期限でソートする"
     all('tbody tr')[1].click_link 'test_task_01'
     expect(page).to have_content '2019-10-03'
     visit tasks_path
     click_link "終了期限でソートする"
-    all('tbody tr')[2].click_link 'test_task_10'
-    expect(page).to have_content '2019-10-05'
+    all('tbody tr')[2].click_link 'test_task_02'
+    expect(page).to have_content '2019-10-02'
   end
 end
