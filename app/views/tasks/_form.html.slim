@@ -13,4 +13,8 @@
   .form-group
     = f.label :end_time
     = f.date_select :end_time, {use_month_numbers: true}, class: 'form-control', id: 'end_time'
+    .form-group
+    = f.label :status
+    = f.select :status, [["未着手", 0], ["着手中", 1], ["完了", 2]], class: 'form-control', id: 'status'
+
   = f.submit nil, class: 'btn btn-primary'
