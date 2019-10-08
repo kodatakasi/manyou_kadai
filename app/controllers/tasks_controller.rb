@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   def index
-    if params[:end_time].present?
+    if params[:task][:search].present?
+      @tasks = Task.where("task_name LIKE ?", "%#{ params[:task][:task_name] }%")
+    elsif params[:end_time].present?
       @tasks = Task.all.order(end_time: "DESC")
     else
       @tasks = Task.all.order(created_at: "DESC")
@@ -42,6 +44,6 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:task_name, :memo, :end_time, :status)
+    params.require(:task).permit(:task_name, :memo, :end_time, :status, :serach)
   end
 end

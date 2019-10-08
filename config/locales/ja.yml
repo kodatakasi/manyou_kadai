@@ -9,6 +9,7 @@ ja:
     list: 一覧
     edit: 編集
     delete: 削除
+    search: 検索
   confirm:
     delete_confirmation: タスクを削除します。よろしいですか？
   flash:
