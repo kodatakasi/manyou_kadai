@@ -5,10 +5,10 @@ class Task < ApplicationRecord
   validates :status, presence: true
 end
 
-def self.search(search)
-  if search
-    Task.where(['task_name LIKE ?', "%#{search}%"])
-  else
-    Task.all
-  end
-end
+# def self.search(search)
+#   if search
+#     Task.where(['task_name LIKE ?', "%#{search}%"])
+#   else
+#     Task.all
+#   end
+# end
