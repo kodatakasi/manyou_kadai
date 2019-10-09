@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   def index
     
     if params[:task].present?
-      if params[:task][:task_name].present?
+      if params[:task][:task_name].present? && params[:task][:status].present?
+        @tasks = Task.where("task_name LIKE ?", "%#{ params[:task][:task_name] }%").where(status: "#{ params[:task][:status] }")
+      elsif params[:task][:task_name].present?
         @tasks = Task.where("task_name LIKE ?", "%#{ params[:task][:task_name] }%")
       elsif params[:task][:status].present?
         @tasks = Task.where(status: "#{ params[:task][:status] }")
