@@ -12,6 +12,7 @@ ja:
         status: ステータス
         created_at: 作成日時
         updated_at: 更新日時
+        priority: 優先度
       user:
         title: タイトル
         name: 名前
@@ -20,3 +21,9 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+  enums:
+    task:
+      priority:
+        high: 高
+        medium: 中
+        low: 低

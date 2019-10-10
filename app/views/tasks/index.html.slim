@@ -22,6 +22,7 @@ table.table.table-hover
       th= Task.human_attribute_name(:created_at)
       th= Task.human_attribute_name(:end_time)
       th= Task.human_attribute_name(:status)
+      th= Task.human_attribute_name(:priority)
       th
   tbody
     - @tasks.each do |task|
@@ -35,6 +36,7 @@ table.table.table-hover
           td = t('view.started')
         - elsif task.status == 2
           td = t('view.complete')
+        td= task.priority_i18n
         td
           = link_to t('view.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
           = link_to  t('view.delete'), task, method: :delete, data: { confirm: t('confirm.delete_confirmation') }, class: 'btn btn-danger'

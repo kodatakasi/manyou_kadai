@@ -15,6 +15,9 @@
     = f.date_select :end_time, {use_month_numbers: true}, class: 'form-control', id: 'end_time'
   .form-group
     = f.label :status
-    = f.select :status, [["未着手", 0], ["着手中", 1], ["完了", 2]], class: 'form-control', id: 'status'
+    = f.select :status, [[t("view.not_started"), 0], [t("view.started"), 1], [t("view.complete"), 2]], class: 'form-control', id: 'status'
+  .form-group
+    = f.label :priority
+    = f.select :priority, [[t("enums.task.priority.low"), "low"], [t("enums.task.priority.medium"), "medium"], [t("enums.task.priority.high"), "high"]] , class: 'form-control', id: 'priority'
 
   = f.submit nil, class: 'btn btn-primary'

@@ -8,4 +8,11 @@ class Task < ApplicationRecord
   scope :end_time, -> { Task.all.order(end_time: "DESC") }
   scope :search_status, -> (status) { Task.where(status: status) }
   scope :search_task_name, -> (task_name){ Task.where("task_name LIKE ?", "%#{ task_name }%") }
+
+  # enum priority: {
+  #     high: 2,
+  #   medium: 1,
+  #      low: 0,
+  # }
+  enum priority: [:low, :medium, :high]
 end
