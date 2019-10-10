@@ -3,16 +3,16 @@ class TasksController < ApplicationController
     
     if params[:task].present?
       if params[:task][:task_name].present? && params[:task][:status].present?
-        @tasks = Task.where("task_name LIKE ?", "%#{ params[:task][:task_name] }%").where(status: "#{ params[:task][:status] }")
+        @tasks = Task.search_task_name(params[:task][:task_name]).search_status(params[:task][:status])
       elsif params[:task][:task_name].present?
-        @tasks = Task.where("task_name LIKE ?", "%#{ params[:task][:task_name] }%")
+        @tasks = Task.search_task_name(params[:task][:task_name])
       elsif params[:task][:status].present?
-        @tasks = Task.where(status: "#{ params[:task][:status] }")
+        @tasks = Task.search_status(params[:task][:status])
       end
     elsif params[:end_time].present?
-        @tasks = Task.all.order(end_time: "DESC")
+        @tasks = Task.end_time
     else
-      @tasks = Task.all.order(created_at: "DESC")
+      @tasks = Task.created_at
     end
 
   end

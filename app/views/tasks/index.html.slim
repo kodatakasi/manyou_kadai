@@ -40,4 +40,6 @@ table.table.table-hover
           = link_to  t('view.delete'), task, method: :delete, data: { confirm: t('confirm.delete_confirmation') }, class: 'btn btn-danger'
 
   = link_to "終了期限でソートする", tasks_path(end_time: "true")
+  br
+  = link_to "戻る", tasks_path
   

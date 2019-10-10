@@ -3,12 +3,9 @@ class Task < ApplicationRecord
   validates :memo, presence: true, length: { maximum: 255 }
   validates :end_time, presence: true
   validates :status, presence: true
+  
+  scope :created_at, -> { Task.all.order(created_at: "DESC") }
+  scope :end_time, -> { Task.all.order(end_time: "DESC") }
+  scope :search_status, -> (status) { Task.where(status: status) }
+  scope :search_task_name, -> (task_name){ Task.where("task_name LIKE ?", "%#{ task_name }%") }
 end
-
-# def self.search(search)
-#   if search
-#     Task.where(['task_name LIKE ?', "%#{search}%"])
-#   else
-#     Task.all
-#   end
-# end
