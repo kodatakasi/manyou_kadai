@@ -5,12 +5,12 @@ h1 = t('view.task_index')
 p = t('view.search')
 = form_with model: Task.new, method: :get, url:tasks_path, local: true do |f|
   .form-group
-    = f.label :taks_name_search, 'タイトル検索'
+    = f.label :taks_name_search, t('view.search_title')
     = f.text_field :task_name, class: 'form-control', id: 'task_name'
   .form-group
-    = f.label :status_search, '状態検索'
+    = f.label :status_search, t('view.search_status')
     / = f.select :status, Task.statuses.keys, class: 'form-control', include_blank: true, selected: ''
-    = select :task, :status, [["未選択", ""], ["未着手", 0], ["着手中", 1], ["完了", 2]], class: 'form-control', id: 'status'
+    = select :task, :status, [[t('view.unselected'), ""], [t('view.not_started'), 0], [t('view.started'), 1], [t('view.complete'), 2]], class: 'form-control', id: 'status'
     = f.hidden_field :search, value: 'true'
   = submit_tag t('view.search'), name: nil, class: 'btn btn-primary'
 
@@ -30,16 +30,16 @@ table.table.table-hover
         td= task.created_at.strftime("%Y-%m-%d %H:%M:%S")
         td= task.end_time
         - if task.status == 0
-          td = "未着手" 
+          td = t('view.not_started')
         - elsif task.status == 1
-          td = "着手中"
+          td = t('view.started')
         - elsif task.status == 2
-          td = "完了"
+          td = t('view.complete')
         td
           = link_to t('view.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
           = link_to  t('view.delete'), task, method: :delete, data: { confirm: t('confirm.delete_confirmation') }, class: 'btn btn-danger'
 
-  = link_to "終了期限でソートする", tasks_path(end_time: "true")
+  = link_to t('view.soat_end_time'), tasks_path(end_time: "true")
   br
-  = link_to "戻る", tasks_path
+  = link_to t('view.back'), tasks_path
   
