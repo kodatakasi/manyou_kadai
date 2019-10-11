@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :login_required
+  
   def new
   end
 
@@ -14,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_sessions
+    reset_session
     redirect_to root_url, notice: 'ログアウトしました。'
   end
 
