@@ -9,6 +9,15 @@ ja:
     list: 一覧
     edit: 編集
     delete: 削除
+    search: 検索
+    search_title: タイトル検索
+    search_status: 状態検索
+    unselected: 未選択
+    not_started: 未着手
+    started: 着手中
+    complete: 完了
+    soat_end_time: 終了期限でソートする
+    back: 戻る
   confirm:
     delete_confirmation: タスクを削除します。よろしいですか？
   flash:

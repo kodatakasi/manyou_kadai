@@ -2,6 +2,18 @@ h1 = t('view.task_index')
 
 = link_to t('view.new_record'), new_task_path, class: 'btn btn-primary'
 
+p = t('view.search')
+= form_with model: Task.new, method: :get, url:tasks_path, local: true do |f|
+  .form-group
+    = f.label :taks_name_search, t('view.search_title')
+    = f.text_field :task_name, class: 'form-control', id: 'task_name'
+  .form-group
+    = f.label :status_search, t('view.search_status')
+    / = f.select :status, Task.statuses.keys, class: 'form-control', include_blank: true, selected: ''
+    = select :task, :status, [[t('view.unselected'), ""], [t('view.not_started'), 0], [t('view.started'), 1], [t('view.complete'), 2]], class: 'form-control', id: 'status'
+    = f.hidden_field :search, value: 'true'
+  = submit_tag t('view.search'), name: nil, class: 'btn btn-primary'
+
 .mb-3
 table.table.table-hover
   thead.thead-default
@@ -9,15 +21,25 @@ table.table.table-hover
       th= Task.human_attribute_name(:task_name)
       th= Task.human_attribute_name(:created_at)
       th= Task.human_attribute_name(:end_time)
+      th= Task.human_attribute_name(:status)
       th
   tbody
     - @tasks.each do |task|
       tr
         td= link_to task.task_name, task
         td= task.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        td=task.end_time
+        td= task.end_time
+        - if task.status == 0
+          td = t('view.not_started')
+        - elsif task.status == 1
+          td = t('view.started')
+        - elsif task.status == 2
+          td = t('view.complete')
         td
           = link_to t('view.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
           = link_to  t('view.delete'), task, method: :delete, data: { confirm: t('confirm.delete_confirmation') }, class: 'btn btn-danger'
 
-  = link_to "終了期限でソートする", tasks_path(end_time: "true")
+  = link_to t('view.soat_end_time'), tasks_path(end_time: "true")
+  br
+  = link_to t('view.back'), tasks_path
+  

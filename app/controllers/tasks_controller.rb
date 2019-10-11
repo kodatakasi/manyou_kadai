@@ -1,10 +1,20 @@
 class TasksController < ApplicationController
   def index
-    if params[:end_time].present?
-      @tasks = Task.all.order(end_time: "DESC")
+    
+    if params[:task].present?
+      if params[:task][:task_name].present? && params[:task][:status].present?
+        @tasks = Task.search_task_name(params[:task][:task_name]).search_status(params[:task][:status])
+      elsif params[:task][:task_name].present?
+        @tasks = Task.search_task_name(params[:task][:task_name])
+      elsif params[:task][:status].present?
+        @tasks = Task.search_status(params[:task][:status])
+      end
+    elsif params[:end_time].present?
+        @tasks = Task.end_time
     else
-      @tasks = Task.all.order(created_at: "DESC")
+      @tasks = Task.created_at
     end
+
   end
 
   def new
@@ -42,6 +52,6 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:task_name, :memo, :end_time)
+    params.require(:task).permit(:task_name, :memo, :end_time, :status, :search)
   end
 end

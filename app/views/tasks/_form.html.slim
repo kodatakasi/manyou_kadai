@@ -13,4 +13,8 @@
   .form-group
     = f.label :end_time
     = f.date_select :end_time, {use_month_numbers: true}, class: 'form-control', id: 'end_time'
+  .form-group
+    = f.label :status
+    = f.select :status, [[t("view.not_started"), 0], [t("view.started"), 1], [t("view.complete"), 2]], class: 'form-control', id: 'status'
+
   = f.submit nil, class: 'btn btn-primary'
