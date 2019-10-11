@@ -3,20 +3,19 @@ class TasksController < ApplicationController
     
     if params[:task].present?
       if params[:task][:task_name].present? && params[:task][:status].present?
-        @tasks = Task.search_task_name(params[:task][:task_name]).search_status(params[:task][:status])
+        @tasks = Task.search_task_name(params[:task][:task_name]).search_status(params[:task][:status]).page(params[:page]).per(8)
       elsif params[:task][:task_name].present?
-        @tasks = Task.search_task_name(params[:task][:task_name])
+        @tasks = Task.search_task_name(params[:task][:task_name]).page(params[:page]).per(8)
       elsif params[:task][:status].present?
-        @tasks = Task.search_status(params[:task][:status])
+        @tasks = Task.search_status(params[:task][:status]).page(params[:page]).per(8)
       end
     elsif params[:end_time].present?
-      @tasks = Task.end_time
+      @tasks = Task.end_time.page(params[:page]).per(8)
     elsif params[:priority].present?
-      @tasks = Task.priority
+      @tasks = Task.priority.page(params[:page]).per(8)
     else
-      @tasks = Task.created_at
+      @tasks = Task.created_at.page(params[:page]).per(8)
     end
-    @tasks = Task.page(params[:page]).per(10)
   end
 
   def new
