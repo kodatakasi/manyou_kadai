@@ -45,4 +45,6 @@ table.table.table-hover
   = link_to t('view.soat_priority'), tasks_path(priority: "true")  
   br
   = link_to t('view.back'), tasks_path
+
+= paginate @tasks
   
