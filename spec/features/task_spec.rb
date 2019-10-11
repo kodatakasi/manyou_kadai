@@ -7,10 +7,12 @@ RSpec.feature "タスク管理機能", type: :feature do
     FactoryBot.create(:task, task_name: 'test_task_10',
                                   memo: 'samplesamplesample', 
                               end_time: '2019-10-5', 
+                              priority: 'medium',
                             created_at: '2019-10-02 13:52:11',
                       )
 
   end
+
   scenario "タスク一覧のテスト" do
     visit tasks_path
     expect(page).to have_content 'test_task_01'
@@ -36,7 +38,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     visit tasks_path
     click_link 'test_task_10'
     expect(page).to have_content 'samplesamplesample'
-
   end
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
@@ -51,7 +52,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_content 'samplesamplesample'
   end
 
-  scenario "タスクが終了期限の降順に並んでいるかのテスト" do
+  scenario "終了期限でソートした時、タスクが終了期限の降順に並んでいるかのテスト" do
     visit tasks_path
     click_link "終了期限でソートする"
     all('tbody tr')[0].click_link 'test_task_10'
@@ -64,5 +65,20 @@ RSpec.feature "タスク管理機能", type: :feature do
     click_link "終了期限でソートする"
     all('tbody tr')[2].click_link 'test_task_02'
     expect(page).to have_content '2019-10-02'
+  end
+
+  scenario "優先度でソートした時、タスクが優先度順に並んでいるかのテスト" do
+    visit tasks_path
+    click_link "優先度でソートする"
+    all('tbody tr')[0].click_link 'test_task_02'
+    expect(page).to have_content '高'
+    visit tasks_path
+    click_link "優先度でソートする"
+    all('tbody tr')[1].click_link 'test_task_10'
+    expect(page).to have_content '中'
+    visit tasks_path
+    click_link "優先度でソートする"
+    all('tbody tr')[2].click_link 'test_task_01'
+    expect(page).to have_content '低'
   end
 end
