@@ -10,7 +10,9 @@ class TasksController < ApplicationController
         @tasks = Task.search_status(params[:task][:status])
       end
     elsif params[:end_time].present?
-        @tasks = Task.end_time
+      @tasks = Task.end_time
+    elsif params[:priority].present?
+      @tasks = Task.priority
     else
       @tasks = Task.created_at
     end
@@ -52,6 +54,6 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:task_name, :memo, :end_time, :status, :search)
+    params.require(:task).permit(:task_name, :memo, :end_time, :status, :search, :priority)
   end
 end

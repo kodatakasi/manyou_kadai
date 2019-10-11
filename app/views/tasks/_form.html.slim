@@ -16,5 +16,9 @@
   .form-group
     = f.label :status
     = f.select :status, [[t("view.not_started"), 0], [t("view.started"), 1], [t("view.complete"), 2]], class: 'form-control', id: 'status'
+  .form-group
+    = f.label :priority
+    = f.select :priority, [[t("enums.task.priority.low"), "low"], [t("enums.task.priority.medium"), "medium"], [t("enums.task.priority.high"), "high"]] , class: 'form-control', id: 'priority'
+
 
   = f.submit nil, class: 'btn btn-primary'

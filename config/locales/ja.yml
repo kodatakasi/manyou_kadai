@@ -17,6 +17,7 @@ ja:
     started: 着手中
     complete: 完了
     soat_end_time: 終了期限でソートする
+    soat_priority: 優先度でソートする
     back: 戻る
   confirm:
     delete_confirmation: タスクを削除します。よろしいですか？

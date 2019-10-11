@@ -17,6 +17,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:end_time)
       td= @task.end_time
     tr
+      th= Task.human_attribute_name(:priority)
+      td= @task.priority_i18n
+    tr
       th= Task.human_attribute_name(:created_at)
       td= @task.created_at
     tr
