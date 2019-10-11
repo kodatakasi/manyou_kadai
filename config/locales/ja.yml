@@ -19,6 +19,10 @@ ja:
     soat_end_time: 終了期限でソートする
     soat_priority: 優先度でソートする
     back: 戻る
+    sign_up: サインアップ
+    error: エラー
+    this @user from being saved: 保存できませんでした
+    create_my_account: アカウント登録する
   confirm:
     delete_confirmation: タスクを削除します。よろしいですか？
   flash:
