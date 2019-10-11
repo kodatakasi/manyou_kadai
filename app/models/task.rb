@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   validates :memo, presence: true, length: { maximum: 255 }
   validates :end_time, presence: true
   validates :status, presence: true
+  validates :priority, presence: true
   
   scope :created_at, -> { Task.all.order(created_at: "DESC") }
   scope :end_time, -> { Task.all.order(end_time: "DESC") }
