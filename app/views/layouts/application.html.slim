@@ -16,6 +16,7 @@ html
           li.navbar-text= link_to 'タスク一覧', tasks_path, class: 'nav-link'
           li.navbar-text= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
         - else
+          li.navbar-text= link_to 'サインアップ', new_user_path, class: 'nav-link'
           li.navbar-text= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
