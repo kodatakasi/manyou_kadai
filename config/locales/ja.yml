@@ -1,6 +1,8 @@
 ---
 ja:
   view:
+    email: メールアドレス
+    password: パスワード
     task_index: タスク一覧
     new_task: タスクの新規登録
     show_task: タスクの詳細
@@ -20,6 +22,10 @@ ja:
     soat_priority: 優先度でソートする
     back: 戻る
     sign_up: サインアップ
+    login: ログイン
+    do_login: ログインする
+    logout: ログアウト
+    my_page: マイページ
     error: エラー
     this @user from being saved: 保存できませんでした
     create_my_account: アカウント登録する
