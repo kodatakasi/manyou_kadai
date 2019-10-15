@@ -13,8 +13,9 @@ html
 
       ul.navbar-nav.ml-auto
         - if current_user
-          li.navbar-text= link_to 'タスク一覧', tasks_path, class: 'nav-link'
+          li.navbar-text= link_to 'タスク一覧', tasks_path, class: 'nav-link', id: 'tasks'
           li.navbar-text= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+          li.navbar-text= link_to 'マイページ', user_path(current_user), class: 'nav-link'
         - else
           li.navbar-text= link_to 'サインアップ', new_user_path, class: 'nav-link'
           li.navbar-text= link_to 'ログイン', login_path, class: 'nav-link'

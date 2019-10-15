@@ -47,6 +47,7 @@ group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'webdrivers'
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

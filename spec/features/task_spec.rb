@@ -2,21 +2,66 @@ require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
   background do
-    FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
-    FactoryBot.create(:task, task_name: 'test_task_10',
-                                  memo: 'samplesamplesample', 
-                              end_time: '2019-10-5', 
-                              priority: 'medium',
-                            created_at: '2019-10-02 13:52:11',
-                      )
+    user_a = FactoryBot.create(:user)
+    user_b = FactoryBot.create(:second_user)
+    FactoryBot.create(:task, user: user_a)
+    FactoryBot.create(:second_task, user: user_a)
+    FactoryBot.create(:third_task, user: user_a)
 
+    visit login_path
+    fill_in "session_email", with: "test1@example.com"
+    fill_in "session_password", with: "passwordpassword"
+    click_button "ログインする"
+  end
+
+  scenario "新しいユーザーのサインアップのテスト" do
+    click_link 'ログアウト'
+    visit new_user_path
+    fill_in 'name', with: "test_user"
+    fill_in 'email', with: "a@example.com"
+    fill_in 'password', with: "password"
+    fill_in 'password_confirmation', with: "password"
+    click_button "アカウント登録する"
+    expect(page).to have_content 'test_user'
+  end
+
+  scenario "ログイン機能のテスト" do
+    visit login_path
+    fill_in "session_email", with: "test1@example.com"
+    fill_in "session_password", with: "passwordpassword"
+    click_button "ログインする"
+    expect(page).to have_content 'ログインしました。'
+  end
+
+  scenario "ログインしていない場合、タスクページに飛ぼうとした場合、ログインページに遷移するテスト" do
+    click_link 'ログアウト'
+    visit tasks_path
+    expect(page).to_not have_content 'タスク一覧'
+    expect(page).to have_button 'ログインする'
+  end
+
+  scenario "他人がログインした場合、自分のタスクは表示しないテスト" do
+    visit login_path
+    fill_in "session_email", with: "test2@example.com"
+    fill_in "session_password", with: "password02"
+    click_button "ログインする"
+    expect(page).to_not have_content 'test_task_01'
+    expect(page).to_not have_content 'test_task_02'
+    expect(page).to_not have_content 'test_task_10'
+  end
+
+  scenario "自分以外のユーザーのマイページにいかなせないテスト" do
+    user = FactoryBot.create(:another_user)
+    visit user_path(user)
+    save_and_open_page
+    expect(page).to_not have_content 'test1@example.com'
   end
 
   scenario "タスク一覧のテスト" do
     visit tasks_path
     expect(page).to have_content 'test_task_01'
     expect(page).to have_content 'test_task_02'
+    expect(page).to have_content 'test_task_10'
   end
 
   scenario "タスク作成のテスト" do
