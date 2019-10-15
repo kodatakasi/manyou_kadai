@@ -1,22 +1,24 @@
 require 'rails_helper'
 
-RSpec.feature "タスク管理機能", type: :feature do
+RSpec.feature "ユーザー管理機能", type: :feature do
   background do
-    FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
-    FactoryBot.create(:task, task_name: 'test_task_10',
-                                  memo: 'samplesamplesample', 
-                              end_time: '2019-10-5', 
-                              priority: 'medium',
-                            created_at: '2019-10-02 13:52:11',
-                      )
+    user_a = FactoryBot.create(:user)
+    user_b = FactoryBot.create(:second_user)
+    FactoryBot.create(:task, user: user_a)
+    FactoryBot.create(:second_task, user: user_a)
+    FactoryBot.create(:third_task, user: user_a)
 
+    visit login_path
+    fill_in "session_email", with: "test1@example.com"
+    fill_in "session_password", with: "passwordpassword"
+    click_button "ログインする"
   end
 
   scenario "タスク一覧のテスト" do
     visit tasks_path
     expect(page).to have_content 'test_task_01'
     expect(page).to have_content 'test_task_02'
+    expect(page).to have_content 'test_task_10'
   end
 
   scenario "タスク作成のテスト" do

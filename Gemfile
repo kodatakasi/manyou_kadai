@@ -18,6 +18,7 @@ gem 'html2slim'
 gem 'enum_help'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -46,6 +47,7 @@ group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'webdrivers'
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

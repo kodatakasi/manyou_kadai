@@ -2,7 +2,6 @@ h1 = t('view.task_index')
 
 = link_to t('view.new_record'), new_task_path, class: 'btn btn-primary'
 
-p = t('view.search')
 = form_with model: Task.new, method: :get, url:tasks_path, local: true do |f|
   .form-group
     = f.label :taks_name_search, t('view.search_title')

@@ -1,23 +1,32 @@
 require 'rails_helper'
-
 RSpec.describe Task, type: :model do
   before do
+    @user = User.create(
+      name: "test_user",
+      email: "test@example.com",
+      password_digest: "password",
+    
+    )
+
     @task = Task.create(
       task_name: "model_test-01",
       memo: "testtesttest",
       status: 0,
+      user_id: @user.id,
     )
 
     @other_task = Task.create(
       task_name: "model_test-02",
       memo: "samplesample",
       status: 1,
+      user_id: @user.id,
     )
 
     @my_task = Task.create(
       task_name: "model_test-03",
       memo: "samplesample",
       status: 0,
+      user_id: @user.id,
     )
   end
 
@@ -32,7 +41,7 @@ RSpec.describe Task, type: :model do
   end
 
   it "titleとcontentに内容が記載されていればバリデーションが通る" do
-    task = Task.new(task_name: '成功テスト', memo: '成功テスト')
+    task = Task.new(task_name: '成功テスト', memo: '成功テスト', user_id: @user.id)
     expect(task).to be_valid
   end
 

@@ -10,6 +10,15 @@ html
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-info
       .navbar-brand Task Management
+
+      ul.navbar-nav.ml-auto
+        - if current_user
+          li.navbar-text= link_to t('view.task_index'), tasks_path, class: 'nav-link', id: 'tasks'
+          li.navbar-text= link_to t('view.logout'), logout_path, method: :delete, class: 'nav-link'
+          li.navbar-text= link_to t('view.my_page'), user_path(current_user), class: 'nav-link'
+        - else
+          li.navbar-text= link_to t('view.sign_up'), new_user_path, class: 'nav-link'
+          li.navbar-text= link_to t('view.login'), login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice
