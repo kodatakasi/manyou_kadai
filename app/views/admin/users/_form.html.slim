@@ -1,0 +1,26 @@
+- if @user.errors.any?
+  #error_explanation
+  h2 = pluralize(@user.errors.count, t("view.error"))
+  prohibited = t('view.this @user from being saved')
+  ul
+    - @user.errors.full_messages.each do |message|
+      li = message
+
+= form_with(model: @user, local: true) do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'name'
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form-control', id: 'email'
+  .form-check
+    = f.label :admin, class: 'form-check-label' do
+      = f.= check_box :admin, class: 'form-check-input'
+      | 管理者権限
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: 'form-control', id: 'password'
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control', id: 'password_confirmation'
+  = f.submit t('view.create_my_account')
