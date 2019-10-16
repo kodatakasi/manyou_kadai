@@ -16,7 +16,7 @@
   .form-check
     = f.label :admin, class: 'form-check-label' do
       = f.check_box :admin, class: 'form-check-input'
-      | t('admin')
+      | #{t('view.admin')}
   .form-group
     = f.label :password
     = f.password_field :password, class: 'form-control', id: 'password'
