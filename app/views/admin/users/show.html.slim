@@ -1,7 +1,7 @@
 h1 ユーザーの詳細
 
 .nav.justify-content-end
-  = link_to '一覧', admin_users_path, class: 'nav-link'
+  = link_to t('view.list'), admin_users_path, class: 'nav-link'
 table.table.table-hover
   tbody
     tr
@@ -15,7 +15,7 @@ table.table.table-hover
       td= @user.email
     tr
       th= User.human_attribute_name(:admin)
-      td= @user.admin? ? 'あり' : 'なし'
+      td= @user.admin? ? "あり" : "なし"
     tr
       th= User.human_attribute_name(:created_at)
       td= @user.created_at
@@ -23,5 +23,36 @@ table.table.table-hover
       th= User.human_attribute_name(:updated_at)
       td= @user.updated_at
 
-= link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'
-= link_to '削除', method: :delete, date: { confirm: "ユーザーを削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to t('view.edit'), edit_admin_user_path, class: 'btn btn-primary mr-3'
+= link_to t('view.delete'), [:admin, @user], method: :delete, data: { confirm: t('confirm.delete_user_confirmation') }, class: 'btn btn-danger'
+
+br
+br
+br
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Task.human_attribute_name(:task_name)
+      th= Task.human_attribute_name(:created_at)
+      th= Task.human_attribute_name(:end_time)
+      th= Task.human_attribute_name(:status)
+      th= Task.human_attribute_name(:priority)
+      th
+  tbody
+    - @tasks.each do |task|
+      tr
+        td= link_to task.task_name, task
+        td= task.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        td= task.end_time
+        - if task.status == 0
+          td = t('view.not_started')
+        - elsif task.status == 1
+          td = t('view.started')
+        - elsif task.status == 2
+          td = t('view.complete')
+        td= task.priority_i18n
+        td
+          = link_to t('view.edit'), edit_task_path(task), class: 'btn btn-primary mr-3 btn-sm'
+          = link_to  t('view.delete'), task, method: :delete, data: { confirm: t('confirm.delete_confirmation') }, class: 'btn btn-danger btn-sm'

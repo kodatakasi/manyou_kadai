@@ -29,12 +29,19 @@ ja:
     error: エラー
     this @user from being saved: 保存できませんでした
     create_my_account: アカウント登録する
+    user_list: ユーザー一覧
   confirm:
     delete_confirmation: タスクを削除します。よろしいですか？
+    delete_user_confirmation: ユーザーを削除します。よろしいですか？
   flash:
     create: タスクを登録しました。
     update: タスクを更新しました。
     delete: タスクを削除しました。
+    user_create: ユーザーを登録しました。
+    user_update: ユーザーを更新しました。
+    user_destroy: ユーザーを削除しました。
+    login: ログインしました。
+    logout: ログアウトしました。
   activerecord:
     errors:
       messages:

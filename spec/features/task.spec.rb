@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ユーザー管理機能", type: :feature do
+RSpec.feature "タスク管理機能", type: :feature do
   background do
     user_a = FactoryBot.create(:user)
     user_b = FactoryBot.create(:second_user)

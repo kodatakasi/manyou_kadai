@@ -8,7 +8,6 @@ ja:
         id: 番号
         task_name: タスク名
         memo: タスクの内容
-        admin: 管理者権限
         end_time: 終了期限
         status: ステータス
         created_at: 作成日時
@@ -19,10 +18,14 @@ ja:
         name: 名前
         email: メールアドレス
         current_password: 現在のパスワード
+        admin: 管理者権限
+        task_number: タスク数
         password: パスワード
         password_digest: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+        created_at: 作成日時
+        updated_at: 更新日時
   enums:
     task:
       priority:

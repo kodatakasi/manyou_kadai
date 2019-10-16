@@ -15,7 +15,8 @@ html
         - if current_user
           li.navbar-text= link_to t('view.task_index'), tasks_path, class: 'nav-link', id: 'tasks'
           li.navbar-text= link_to t('view.logout'), logout_path, method: :delete, class: 'nav-link'
-          li.navbar-text= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
+          - if current_user.admin?
+            li.navbar-text= link_to t('view.user_list'), admin_users_path, class: 'nav-link'
           li.navbar-text= link_to t('view.my_page'), user_path(current_user), class: 'nav-link'
         - else
           li.navbar-text= link_to t('view.sign_up'), new_user_path, class: 'nav-link'
