@@ -7,4 +7,12 @@ class User < ApplicationRecord
   validates :password_digest, presence: true, length: { minimum: 6 }
 
   has_many :tasks, dependent: :destroy
+
+  before_destroy do
+    throw(:abort) if User.where(admin: true).count <= 1 && self.admin?
+  end
+
+  before_update do
+    throw(:abort) if User.where(admin: true).count <= 1
+  end
 end

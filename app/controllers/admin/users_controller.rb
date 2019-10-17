@@ -30,15 +30,21 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update(user_params)
+    unless @user.update(user_params)
+      redirect_to admin_user_url(@user), notice: "管理者をなくすことはできません。"
+    else
       redirect_to admin_user_url(@user), notice: t('flash.user_update')
     end
   end
   
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_url, notice: t('flash.user_destroy')
+
+    unless @user.destroy
+      redirect_to admin_users_url, notice: "管理者をなくすことはできません。"
+    else
+      redirect_to admin_users_url, notice: t('flash.user_destroy')
+    end
   end
 
   private
@@ -48,6 +54,5 @@ class Admin::UsersController < ApplicationController
 
   def require_admin
     raise Forbidden unless current_user.admin?
-    # redirect_to root_url unless current_user.admin?
   end
 end
