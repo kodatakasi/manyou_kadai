@@ -43,6 +43,7 @@ ja:
     user_destroy: ユーザーを削除しました。
     login: ログインしました。
     logout: ログアウトしました。
+    no_admin: 管理者権限機能を制限しています。
   activerecord:
     errors:
       messages:

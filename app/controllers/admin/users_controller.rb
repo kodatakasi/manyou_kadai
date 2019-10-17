@@ -31,7 +31,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     unless @user.update(user_params)
-      redirect_to admin_user_url(@user), notice: "管理者をなくすことはできません。"
+      redirect_to admin_user_url(@user), notice: t('flash.no_admin')
     else
       redirect_to admin_user_url(@user), notice: t('flash.user_update')
     end
@@ -41,7 +41,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     unless @user.destroy
-      redirect_to admin_users_url, notice: "管理者をなくすことはできません。"
+      redirect_to admin_users_url, notice: t('flash.no_admin')
     else
       redirect_to admin_users_url, notice: t('flash.user_destroy')
     end
