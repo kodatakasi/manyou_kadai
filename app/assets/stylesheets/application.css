@@ -29,10 +29,11 @@
  li {
   list-style-type: none;
  }
- td > p {
+ .label-color {
    text-align: center;
    background-color: #808080;
    color: #fff;
    border-radius: 10px;
+   width: 60px;
  }
  

@@ -13,8 +13,8 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.end_time.page(params[:page]).per(8)
     elsif params[:priority].present?
       @tasks = current_user.tasks.priority.page(params[:page]).per(8)
-    elsif params[:label_id].present?
-      @tasks = current_user.tasks.joins(:labels).where(labels: { id: params[:label_id] })
+    # elsif params[:task][:label_ids].present?
+      # @tasks = current_user.tasks.label.page(params[:page]).per(8)
     else
       @tasks = current_user.tasks.created_at.page(params[:page]).per(8)
     end
