@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :tasks
   resources :users
 
-  get '*anything' => 'errors#not_found'
+  get '*path', controller: 'application', action: 'render_404'
 end
