@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
-  
+  protect_from_forgery with: :exception
+
+  class Forbidden < ActionController::ActionControllerError
+  end
+
+  rescue_from Forbidden, with: :rescue403
+
   helper_method :current_user
   before_action :login_required
   
@@ -11,5 +17,10 @@ class ApplicationController < ActionController::Base
 
   def login_required
     redirect_to login_url unless current_user
+  end
+
+  def rescue403(e)
+    @exception = e
+    render template: 'errors/forbidden', status: 403
   end
 end
