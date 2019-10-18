@@ -29,4 +29,10 @@
  li {
   list-style-type: none;
  }
+ td > p {
+   text-align: center;
+   background-color: #808080;
+   color: #fff;
+   border-radius: 10px;
+ }
  

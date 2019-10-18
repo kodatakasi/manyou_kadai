@@ -19,7 +19,8 @@
   .form-group
     = f.label :priority
     = f.select :priority, [[t("enums.task.priority.low"), "low"], [t("enums.task.priority.medium"), "medium"], [t("enums.task.priority.high"), "high"]] , class: 'form-control', id: 'priority'
-    
-  = form.collection_check_boxes(:label_ids, Label.all, :id, :name)
+  .form-group
+    = f.label :label
+    = f.collection_check_boxes(:label_ids, Label.all, :id, :title)
 
   = f.submit nil, class: 'btn btn-primary'
