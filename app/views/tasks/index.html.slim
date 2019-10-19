@@ -11,9 +11,8 @@ h1 = t('view.task_index')
     = select :task, :status, [[t('view.unselected'), ""], [t('view.not_started'), 0], [t('view.started'), 1], [t('view.complete'), 2]], class: 'form-control', id: 'status'
     = f.hidden_field :search, value: 'true'
   .form-group
-    = f.label :label, t('view.search_label')
+    = f.label :label_search, t('view.search_label')
     = f.select("label_id", Label.pluck(:title, :id), { include_blank: true })
-    = f.hidden_field :label_id, value: 'true'
   = submit_tag t('view.search'), name: nil, class: 'btn btn-primary btn-sm'
 
 .mb-3
