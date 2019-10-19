@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   scope :search_status, -> (status) { Task.where(status: status) }
   scope :search_task_name, -> (task_name){ Task.where("task_name LIKE ?", "%#{ task_name }%") }
   scope :priority, -> { Task.all.order(priority: "DESC") }
-  scope :label, -> (label_id){Task.all.joins(:labels).where(labels: { id: params[:label_id] })}
+  scope :label, -> {Task.all.joins(:labels).where(labels: { title: "勉強"})}
   # scope :label, -> (label_id) { Task.all.where(labels: {label_id: label_id}) }
 
   enum priority: [:low, :medium, :high]
