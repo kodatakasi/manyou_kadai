@@ -19,5 +19,9 @@ Label.create(
   title: "勉強"
 )
 Label.create(
-  title: "遊び"
+  title: "休日"
 )
+Label.create(
+  title: "注意"
+)
+
