@@ -9,8 +9,7 @@ class TasksController < ApplicationController
       elsif params[:task][:status].present?
         @tasks = current_user.tasks.search_status(params[:task][:status]).page(params[:page]).per(8)
       elsif params[:task][:label_id].present?
-        # @tasks = Task.joins(:labels).where(labels: { id: params[:label_id] })
-        @tasks = current_user.tasks.label.page(params[:page]).per(8)
+        @tasks = current_user.tasks.search_label(params[:task][:label_id]).page(params[:page]).per(8)
       end
     elsif params[:end_time].present?
       @tasks = current_user.tasks.end_time.page(params[:page]).per(8)

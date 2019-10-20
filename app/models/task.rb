@@ -8,10 +8,9 @@ class Task < ApplicationRecord
   scope :created_at, -> { Task.all.order(created_at: "DESC") }
   scope :end_time, -> { Task.all.order(end_time: "DESC") }
   scope :search_status, -> (status) { Task.where(status: status) }
-  scope :search_task_name, -> (task_name){ Task.where("task_name LIKE ?", "%#{ task_name }%") }
+  scope :search_task_name, -> (task_name) { Task.where("task_name LIKE ?", "%#{ task_name }%") }
   scope :priority, -> { Task.all.order(priority: "DESC") }
-  scope :label, -> {Task.all.joins(:labels).where(labels: { title: "勉強"})}
-  # scope :label, -> (label_id) { Task.all.where(labels: {label_id: label_id}) }
+  scope :search_label, -> (label_id) {Task.all.joins(:labels).where(labels: { id: label_id})}
 
   enum priority: [:low, :medium, :high]
 
