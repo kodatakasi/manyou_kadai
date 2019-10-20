@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.feature "タスク管理機能", type: :feature do
   background do
     FactoryBot.create(:label)
-    FactoryBot.create(:second_label)
+    label_a = FactoryBot.create(:second_label)
     user_a = FactoryBot.create(:user)
     user_b = FactoryBot.create(:second_user)
     FactoryBot.create(:task, user: user_a)
     FactoryBot.create(:second_task, user: user_a)
     task_c = FactoryBot.create(:third_task, user: user_a)
-    FactoryBot.create(:labelling, task: task_c)
+    FactoryBot.create(:labelling, label: label_a, task: task_c)
 
     visit login_path
     fill_in "session_email", with: "test1@example.com"
@@ -97,9 +97,9 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "ラベルで検索できる" do
-    save_and_open_page
     select('label02', from: 'task_label_id')
     click_button '検索'
+    save_and_open_page
     expect(page).to_not have_content 'test_task_01'
     expect(page).to_not have_content 'test_task_02'
     expect(page).to have_content 'test_task_10'
