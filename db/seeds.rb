@@ -11,6 +11,12 @@ User.create(
   password_confirmation: "password",
   admin: "true"
 )
+User.create(
+  name: "test_user", 
+  email: "test@dic.com", 
+  password: "passowrd", 
+  password_confirmation: "password",
+)
 
 Label.create(
   title: "仕事"
@@ -24,4 +30,3 @@ Label.create(
 Label.create(
   title: "注意"
 )
-
