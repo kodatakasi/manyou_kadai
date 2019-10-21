@@ -2,20 +2,24 @@ User.create(
   name: "shibao", 
   email: "shibao@dic.com", 
   password: "shibaodayo", 
-  password_confirmation: "shibaodayo"
 )
 User.create(
   name: "admin", 
   email: "admin@dic.com", 
-  password: "passowrd", 
-  password_confirmation: "password",
-  admin: "true"
+  password: "password", 
+  admin: "true",
 )
 User.create(
   name: "test_user", 
   email: "test@dic.com", 
-  password: "passowrd", 
-  password_confirmation: "password",
+  password: "password", 
+)
+
+User.create(
+  name: "test_user2", 
+  email: "test02@dic.com", 
+  password: "password", 
+  admin: "true"
 )
 
 Label.create(
