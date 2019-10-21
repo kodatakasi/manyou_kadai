@@ -13,6 +13,7 @@ ja:
         created_at: 作成日時
         updated_at: 更新日時
         priority: 優先度
+        label: ラベル
       user:
         title: タイトル
         name: 名前

@@ -14,6 +14,7 @@ ja:
     search: 検索
     search_title: タイトル検索
     search_status: 状態検索
+    search_label: ラベル検索
     unselected: 未選択
     not_started: 未着手
     started: 着手中

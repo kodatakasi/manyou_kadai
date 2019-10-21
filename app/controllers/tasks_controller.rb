@@ -8,6 +8,8 @@ class TasksController < ApplicationController
         @tasks = current_user.tasks.search_task_name(params[:task][:task_name]).page(params[:page]).per(8)
       elsif params[:task][:status].present?
         @tasks = current_user.tasks.search_status(params[:task][:status]).page(params[:page]).per(8)
+      elsif params[:task][:label_id].present?
+        @tasks = current_user.tasks.search_label(params[:task][:label_id]).page(params[:page]).per(8)
       end
     elsif params[:end_time].present?
       @tasks = current_user.tasks.end_time.page(params[:page]).per(8)
@@ -55,6 +57,6 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:task_name, :memo, :end_time, :status, :search, :priority, :user_id)
+    params.require(:task).permit(:task_name, :memo, :end_time, :status, :search, :priority, :user_id, { label_ids: [] })
   end
 end

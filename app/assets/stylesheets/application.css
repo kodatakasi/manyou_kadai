@@ -29,4 +29,13 @@
  li {
   list-style-type: none;
  }
+ .label-color {
+   text-align: center;
+   background-color: #808080;
+   color: #fff;
+   border-radius: 10px;
+   width: 60px;
+   float: left;
+   margin: 0 5px;
+ }
  
