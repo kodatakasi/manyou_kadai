@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
+  # heroku Basic認証
+  # http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
+  
   protect_from_forgery with: :exception
 
   helper_method :current_user
