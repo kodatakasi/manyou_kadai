@@ -19,6 +19,7 @@ gem 'enum_help'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'bcrypt', '~> 3.1.7'
+gem "simple_calendar", "~> 2.0"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -52,4 +52,6 @@ table.table.table-hover
   = link_to t('view.soat_priority'), tasks_path(priority: "true"), class: 'btn btn-info pull-right btn-sm'
   
 = paginate @tasks
-  
+
+= month_calendar do |date|
+  = date
