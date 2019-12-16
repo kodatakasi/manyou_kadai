@@ -53,5 +53,8 @@ table.table.table-hover
   
 = paginate @tasks
 
-= month_calendar do |date|
+= month_calendar events: @tasks do |date, tasks|
   = date
+  
+  - tasks.each do |task|
+    .= task.task_name
